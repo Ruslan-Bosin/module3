@@ -1,13 +1,792 @@
 * {
-  box-sizing: border-box;
-  background-color: rgb(255, 157, 157);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+
 body {
-  font-family: "AdventureIndianaJones";
+    font-family: 'Roboto', sans-serif;
+    background-color: black;
+    min-height: 100vh;
+    overflow: hidden;
 }
-.AIJ {
-  font-family: "AdventureIndianaJones";
+
+.container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 2;
 }
-.Cool {
-  font-family: "Coolvetica";
+
+h1 {
+    color: white;
+    font-size: 40px;
+    font-weight: 500;
+}
+
+.input-text {
+    color: white;
+    font-size: 40px;
+    font-weight: 500;
+    margin-top: 20px;
+    min-height: 50px;
+}
+
+.mobile-input {
+  display: none;
+  width: 200px;
+  height: 40px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  color: white;
+  text-align: center;
+  font-size: 18px;
+  margin: 20px auto 0;
+  padding: 0 10px;
+}
+
+.mobile-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+@media (max-width: 768px) {
+  .mobile-input {
+    display: block;
+  }
+}
+
+.timeout-message {
+    color: white;
+    font-size: 15px;
+    font-weight: 200;
+    text-transform: uppercase;
+    position: fixed;
+    bottom: 35px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.stars {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.star {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    transition: transform 0.1s ease-out;
+    filter: blur(7px) brightness(1.2);
+    will-change: transform;
+}
+
+.container {
+    width: 1330px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.second-page {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: 50px;
+    position: relative;
+}
+
+.second-page.hidden {
+    display: none;
+}
+
+.corner-sphere {
+    position: fixed;
+    width: 400px;
+    height: 400px;
+    pointer-events: none;
+    z-index: 999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.corner-sphere::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.8),
+        rgba(200, 200, 200, 0.8),
+        rgba(255, 255, 255, 0.8)
+    );
+    filter: blur(30px);
+    border-radius: 50%;
+    animation: rotateSphere 8s linear infinite;
+}
+
+.corner-sphere-1 {
+    top: -200px;
+    left: -200px;
+}
+
+.corner-sphere-2 {
+    bottom: -200px;
+    left: -200px;
+}
+
+.content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    margin-bottom: 100px;
+}
+
+.title {
+    color: white;
+    font-size: 70px;
+    font-weight: 700;
+    margin-bottom: 32px;
+    text-align: left;
+    text-transform: uppercase;
+    transition: opacity 0.5s ease;
+}
+
+.title-line {
+    width: 629px;
+    height: 21px;
+    background-color: #1D1D1D;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.description {
+    color: white;
+    font-size: 20px;
+    max-width: 100%;
+    line-height: 1.5;
+    font-weight: 200;
+    text-align: left;
+}
+
+.planetarium-link {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    position: relative;
+    z-index: 1000;
+}
+
+.planetarium-link:hover {
+    text-decoration: underline;
+}
+
+.hint-text {
+    opacity: 0;
+    color: white;
+    font-size: 20px;
+    transition: opacity 0.3s ease;
+}
+
+.hint-text.visible {
+    opacity: 1;
+}
+
+.right-content {
+    position: relative;
+    perspective: 1000px;
+    width: 343px;
+    height: 477px;
+    z-index: 1;
+    overflow: visible;
+}
+
+.card-wrapper {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: all 0.3s ease;
+    width: 343px;
+    height: 477px;
+    transform: perspective(1000px) rotateX(0) rotateY(0);
+    will-change: transform;
+}
+
+.card-image {
+    width: 343px;
+    height: 477px;
+    object-fit: contain;
+    position: relative;
+    backface-visibility: hidden;
+}
+
+.card-glow {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(0deg);
+    background: linear-gradient(
+        90deg,
+        rgba(255, 223, 0, 0.5),
+        rgba(144, 238, 144, 0.5),
+        rgba(0, 191, 255, 0.5),
+        rgba(255, 69, 0, 0.5),
+        rgba(255, 255, 255, 0.5),
+        rgba(255, 218, 185, 0.5),
+        rgba(255, 223, 0, 0.5)
+    );
+    background-size: 200% 200%;
+    filter: blur(80px);
+    animation: moveGradient 8s linear infinite, rotate 10s linear infinite;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.bottom-cards {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+    z-index: 1;
+}
+
+.card {
+    width: 76px;
+    height: 105px;
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+    background: transparent;
+    overflow: hidden;
+}
+
+.card:before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at calc(var(--x) * 1px) calc(var(--y) * 1px), hsl(0 0% 100% / 0.5), transparent 15vmin),
+        transparent;
+    background-attachment: fixed;
+    pointer-events: none;
+    border-radius: 10px;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.card:hover:before {
+    opacity: 1;
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-placeholder {
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.planetarium {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: black;
+    z-index: 2;
+    overflow: hidden;
+}
+
+.planetarium.hidden {
+    display: none;
+}
+
+.transition-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    background: url('/images/transition.png') center/cover no-repeat;
+    transition: opacity 0.3s;
+}
+
+.transition-overlay::before,
+.transition-overlay::after,
+.transition-overlay .circle-1,
+.transition-overlay .circle-2,
+.transition-overlay .circle-3,
+.transition-overlay .circle-4 {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    border: 2px solid rgba(70, 70, 70, 0.8);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    animation: none;
+}
+
+.transition-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.transition-overlay.active::before {
+    animation: tunnel 3s linear;
+    animation-delay: 0s;
+}
+
+.transition-overlay.active::after {
+    animation: tunnel 3s linear;
+    animation-delay: 0.5s;
+}
+
+.transition-overlay.active .circle-1 {
+    animation: tunnel 3s linear;
+    animation-delay: 1s;
+}
+
+.transition-overlay.active .circle-2 {
+    animation: tunnel 3s linear;
+    animation-delay: 1.5s;
+}
+
+.transition-overlay.active .circle-3 {
+    animation: tunnel 3s linear;
+    animation-delay: 2s;
+}
+
+.transition-overlay.active .circle-4 {
+    animation: tunnel 3s linear;
+    animation-delay: 2.5s;
+}
+
+.planets-container {
+    position: relative;
+    width: 700px;
+    height: 700px;
+    margin-left: -100px;
+    z-index: 1;
+    background: black;
+    scale: 1.2;
+    left: -100px;
+    border-radius: 50%;
+}
+
+.orbit {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border: 1px solid #212628;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    animation: rotate linear infinite;
+}
+
+.orbit-1 {
+    width: 207px;
+    height: 207px;
+    animation-duration: 8s;
+}
+
+.orbit-2 {
+    width: 368px;
+    height: 368px;
+    animation-duration: 12s;
+    animation-direction: reverse;
+}
+
+.orbit-3 {
+    width: 529px;
+    height: 529px;
+    animation-duration: 16s;
+}
+
+.planet {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: border-width 0.3s, box-shadow 0.3s;
+    z-index: 1000;
+    transform: translate(-50%, -50%);
+    pointer-events: auto;
+}
+
+.planet:hover {
+    border-width: 10px;
+}
+
+.planet-1 {
+    background: #53F5CF;
+    border: 8px solid rgba(83, 245, 207, 0.7);
+    box-shadow: 0 0 20px rgba(83, 245, 207, 0.7);
+    top: 0;
+    left: 50%; 
+    animation: rotate 8s linear infinite;
+}
+
+.planet-2 {
+    background: #9C60FE;
+    border: 8px solid rgba(156, 96, 254, 0.7);
+    box-shadow: 0 0 20px rgba(156, 96, 254, 0.7);
+    top: 50%;
+    left: 100%;
+    animation: rotate 12s linear infinite reverse;
+}
+
+.planet-3 {
+    background: #FF53A4;
+    border: 8px solid rgba(255, 83, 164, 0.7);
+    box-shadow: 0 0 20px rgba(255, 83, 164, 0.7);
+    top: 100%;
+    left: 50%;
+    animation: rotate 16s linear infinite;
+}
+
+.eye {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 132px;
+    height: 55px;
+    border: 2px solid rgba(33, 38, 40, 1);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.eye-inner {
+    position: absolute;
+    width: 25px;
+    height: 35px;
+    border: 2px solid rgba(33, 38, 40, 1);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s;
+}
+
+.planetarium-text {
+    position: absolute;
+    top: 50%;
+    right: 200px;
+    transform: translateY(-50%);
+    color: white;
+    text-align: right;
+    text-align: left;
+    font-size: 300;
+}
+
+.planetarium-text h2 {
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.planetarium-text p {
+    font-size: 18px;
+    line-height: 1.5;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+@keyframes rotate {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+.second-card-screen {
+    position: fixed;
+    inset: 0;
+    min-height: 100%;
+    height: 100%;
+    background: black;
+    z-index: 10;
+    overflow-y: auto;
+}
+
+.second-card-screen.hidden {
+    display: none;
+}
+
+.second-card-screen > div {
+    position: relative;
+    min-height: 100%;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 20px;
+    perspective: 1000px;
+}
+
+.memory-card {
+    width: 231px;
+    height: 327px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+    cursor: pointer;
+}
+
+.memory-card.flipped {
+    transform: rotateY(180deg);
+}
+
+.front-face,
+.back-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+}
+
+.front-face {
+    transform: rotateY(180deg);
+}
+
+.hidden-card-screen {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: black;
+    z-index: 10;
+}
+
+.hidden-card-screen.hidden {
+    display: none;
+}
+
+.scattered-cards-container {
+    position: relative;
+    width: 100%;
+    height: calc(100%);
+    overflow: hidden;
+}
+
+.scattered-card {
+    position: absolute;
+    width: 231px;
+    height: 327px;
+    cursor: move;
+    user-select: none;
+    touch-action: none;
+    -webkit-user-drag: none;
+    z-index: 2;
+}
+
+.scattered-card img {
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.center-card {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 231px;
+    height: 327px;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.center-card::before {
+    content: '';
+    position: absolute;
+    width: 800px;
+    height: 800px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(0deg);
+    background: linear-gradient(
+        90deg,
+        rgba(255, 223, 0, 0.8),
+        rgba(144, 238, 144, 0.8),
+        rgba(0, 191, 255, 0.8),
+        rgba(255, 69, 0, 0.8),
+        rgba(255, 255, 255, 0.8),
+        rgba(255, 218, 185, 0.8),
+        rgba(255, 223, 0, 0.8)
+    );
+    background-size: 200% 200%;
+    filter: blur(80px);
+    animation: moveGradient 8s linear infinite, rotate 10s linear infinite;
+    z-index: -2;
+}
+
+.center-card.flipped {
+    transform: translate(-50%, -50%) rotateY(-180deg);
+}
+
+.center-card .front-face {
+    transform: rotateY(180deg);
+}
+
+.center-card .back-face {
+    transform: rotateY(0deg);
+}
+
+.victory-screen {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: black;
+    z-index: 20;
+    min-height: 100vh;
+}
+
+.victory-screen.hidden {
+    display: none;
+}
+
+.victory-title {
+    color: white;
+    font-size: 64px;
+    margin-bottom: 60px;
+  font-weight: 800;
+  margin-top: 70px;
+}
+
+.victory-cards {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.victory-card {
+    width: 259px;
+    height: 349px;
+    position: relative;
+    z-index: 2;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease;
+}
+
+.victory-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    position: relative;
+    z-index: 2;
+    border-radius: 10px;
+    backface-visibility: hidden;
+}
+
+.victory-card:hover {
+    transform: rotateY(15deg) rotateX(-5deg);
+}
+
+.victory-card::before {
+    content: '';
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(0deg);
+    background: linear-gradient(
+        90deg,
+        rgba(255, 223, 0, 0.8),
+        rgba(144, 238, 144, 0.8),
+        rgba(0, 191, 255, 0.8),
+        rgba(255, 69, 0, 0.8),
+        rgba(255, 255, 255, 0.8),
+        rgba(255, 218, 185, 0.8),
+        rgba(255, 223, 0, 0.8)
+    );
+    background-size: 200% 200%;
+    filter: blur(80px);
+    animation: moveGradient 8s linear infinite, rotate 10s linear infinite;
+    z-index: 1;
+}
+
+.victory-text {
+    color: white;
+    font-size: 20px;
+    font-weight: 100;
+    text-align: center;
+    line-height: 1.5;
+    margin-bottom: 60px;
+}
+
+.credits {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+    border: 4px white dashed;
+    border-spacing: 10px;
+    padding: 40px;
+    margin: 0 40px ;
+    box-sizing: border-box;
+}
+
+.credits-container {
+    width: 1210px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.author, .curators {
+    line-height: 1.8;
+    font-weight: 300;
+}
+
+.logo img {
+    width: 391px;
+    height: 175px;
+    object-fit: contain;
 }

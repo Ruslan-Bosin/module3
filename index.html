@@ -1,18 +1,220 @@
 <!DOCTYPE html>
-<html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ruslan</title>
-    <link rel="stylesheet" href="stylesheets/style.css" />
-    <script src="javascripts/index.js"></script>
-    <!-- <link rel="icon" type="image/x-icon" href="images/icon.ico" /> -->
-    <!-- <link rel="icon" type="image/x-icon" href="images/icon.ico" /> -->
-    <meta property="og:title" content="Module3" />
-    <meta property="og:description" content="Веб-плакат 1 курс 3 модуль" />
-    <meta property="og:type" content="website" />
-  </head>
-  <body>
-    <p class="">Hello world</p>
-  </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clean Project</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="stylesheets/style.css">
+</head>
+<body>
+    <div class="stars">
+        <!-- Stars will be added via JavaScript -->
+    </div>
+    <div class="corner-sphere corner-sphere-1"></div>
+    <div class="corner-sphere corner-sphere-2"></div>
+    <div class="transition-overlay">
+        <div class="circle-1"></div>
+        <div class="circle-2"></div>
+        <div class="circle-3"></div>
+        <div class="circle-4"></div>
+    </div>
+    <div class="planetarium">
+        <div class="planets-container">
+            <div class="orbit orbit-1">
+                <div class="planet planet-1"></div>
+            </div>
+            <div class="orbit orbit-2">
+                <div class="planet planet-2"></div>
+            </div>
+            <div class="orbit orbit-3">
+                <div class="planet planet-3"></div>
+            </div>
+            <div class="eye">
+                <div class="eye-inner"></div>
+            </div>
+        </div>
+        <div class="planetarium-text">
+            <h2>ВЫБЕРИТЕ ПЛАНЕТУ</h2>
+            <p>ПРОЙДИТИ ИСПЫТАНИЕ<br>И ПОЛУЧИТЕ КАРТУ ДЛЯ<br>КОЛЛЕКЦИИ</p>
+        </div>
+    </div>
+    <div class="second-card-screen hidden">
+        <div>
+            <div class="cards-grid">
+                <div class="memory-card" data-card="4">
+                    <img class="front-face" src="./images/4.png" alt="card 4">
+                    <img class="back-face" src="./images/backsidecard.png" alt="card back">
+                </div>
+                <div class="memory-card" data-card="5">
+                    <img class="front-face" src="./images/5.png" alt="card 5">
+                    <img class="back-face" src="./images/backsidecard.png" alt="card back">
+                </div>
+                <div class="memory-card" data-card="2">
+                    <img class="front-face" src="./images/2.png" alt="card 2">
+                    <img class="back-face" src="./images/backsidecard.png" alt="card back">
+                </div>
+                <div class="memory-card" data-card="1">
+                    <img class="front-face" src="./images/1.png" alt="card 1">
+                    <img class="back-face" src="./images/backsidecard.png" alt="card back">
+                </div>
+                <div class="memory-card" data-card="3">
+                    <img class="front-face" src="./images/3.png" alt="card 3">
+                    <img class="back-face" src="./images/backsidecard.png" alt="card back">
+                </div>
+                <div class="memory-card" data-card="5">
+                    <img class="front-face" src="./images/5.png" alt="card 5">
+                    <img class="back-face" src="./images/backsidecard.png" alt="card back">
+                </div>
+                <div class="memory-card" data-card="3">
+                    <img class="front-face" src="./images/3.png" alt="card 3">
+                    <img class="back-face" src="./images/backsidecard.png" alt="card back">
+                </div>
+                <div class="memory-card" data-card="2">
+                    <img class="front-face" src="./images/2.png" alt="card 2">
+                    <img class="back-face" src="./images/backsidecard.png" alt="card back">
+                </div>
+                <div class="memory-card" data-card="4">
+                    <img class="front-face" src="./images/4.png" alt="card 4">
+                    <img class="back-face" src="./images/backsidecard.png" alt="card back">
+                </div>
+                <div class="memory-card" data-card="1">
+                    <img class="front-face" src="./images/1.png" alt="card 1">
+                    <img class="back-face" src="./images/backsidecard.png" alt="card back">
+                </div>
+            </div>
+            <div class="bottom-cards">
+                <div class="card active">
+                    <img src="./images/kamella.png" alt="Card 1">
+                </div>
+                <div class="card">
+                    <div class="card-placeholder"></div>
+                </div>
+                <div class="card">
+                    <div class="card-placeholder"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="circle-1"></div>
+        <div class="circle-2"></div>
+        <div class="circle-3"></div>
+        <div class="circle-4"></div>
+    </div>
+    <div class="planetarium hidden">
+        <div class="planets-container">
+            <div class="orbit orbit-1">
+                <div class="planet planet-1"></div>
+            </div>
+            <div class="orbit orbit-2">
+                <div class="planet planet-2"></div>
+            </div>
+            <div class="orbit orbit-3">
+                <div class="planet planet-3"></div>
+            </div>
+            <div class="eye">
+                <div class="eye-inner"></div>
+            </div>
+        </div>
+        <div class="planetarium-text">
+            <h2>ВЫБЕРИТЕ ПЛАНЕТУ</h2>
+            <p>ПРОЙДИТИ ИСПЫТАНИЕ<br>И ПОЛУЧИТЕ КАРТУ ДЛЯ<br>КОЛЛЕКЦИИ</p>
+        </div>
+    </div>
+    <div class="container">
+        <h1 class="typewriter"></h1>
+        <div class="input-text"></div>
+        <input type="text" class="mobile-input" autocomplete="off" placeholder="Введите ответ">
+        <div class="second-page hidden">
+            <div class="content-wrapper">
+                <div class="left-content">
+                    <h2 class="title">Межвселенский</h2>
+                    <div class="title-line"></div>
+                    <p class="description">
+                        ВЫ ТОЛЬКО ЧТО ПОЛУЧИЛИ ПЕРВУЮ КАРТОЧКУ. СОБЕРИТЕ ЕЩЕ<br>
+                        ДВЕ ДЛЯ ТОГО ЧТОБЫ УЧАСТВОВАТЬ В ТУРНИРЕ.<br>
+                        ОТПРАВЛЯЙТЕСЬ <span class="planetarium-link">В ПЛАНЕТАРИЙ</span> <span class="hint-text">(ПРОСТО НАЖМИ НА НЕГО)</span>
+                    </p>
+                </div>
+                <div class="right-content">
+                    <div class="card-glow"></div>
+                    <div class="card-wrapper">
+                        <img src="./images/kamella.png" alt="Card" class="card-image">
+                    </div>
+                </div>
+            </div>
+            <div class="bottom-cards">
+                <div class="card active">
+                    <img src="./images/kamella.png" alt="Card 1">
+                </div>
+                <div class="card">
+                    <div class="card-placeholder"></div>
+                </div>
+                <div class="card">
+                    <div class="card-placeholder"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hidden-card-screen hidden">
+        <div class="scattered-cards-container">
+            <div class="center-card">
+                <img class="front-face" src="./images/latishev.png" alt="Card front">
+                <img class="back-face" src="./images/backsidecard.png" alt="Card back">
+            </div>
+        </div>
+        <div class="bottom-cards">
+            <div class="card active">
+                <img src="./images/kamella.png" alt="Card 1">
+            </div>
+            <div class="card active">
+                <img src="./images/anna.png" alt="Card 2">
+            </div>
+            <div class="card">
+                <div class="card-placeholder"></div>
+            </div>
+        </div>
+    </div>
+    <div class="victory-screen hidden">
+        <h1 class="victory-title">ПОБЕДА!</h1>
+        <div class="victory-cards">
+            <div class="victory-card">
+                <img src="./images/kamella.png" alt="Card 1">
+            </div>
+            <div class="victory-card">
+                <img src="./images/anna.png" alt="Card 2">
+            </div>
+            <div class="victory-card">
+                <img src="./images/latishev.png" alt="Card 3">
+            </div>
+        </div>
+        <p class="victory-text">
+            УРА! ВЫ ПРЕОДОЛЕЛИ ВСЕ ИСПЫТАНИЯ МУЛЬТИВСЕЛЕННОЙ И<br>
+            СОБРАЛИ КОЛЛЕКЦИЮ ИЗ ТРЁХ КАРД. ТЕПЕРЬ ВЫ ТОЧНО<br>
+            СМОЖЕТЕ УЧАСТВОВАТЬ В ТУРНИРЕ! ДА И С ТАКИМ КАРТАМИ КАК<br>
+            ЛАТИШЕВ КАМЕЛЛА и АННЬА У ВАС ЕСТЬ ВСЕ ШАНСЫ НА ПОБЕДУ! УВИДИМСЯ...
+        </p>
+        <div class="credits">
+            <div class="credits-container">
+                <div class="author">
+                   
+                </div>
+                <div class="curators">
+                   <span>АВТОР: Босин Руслан (Б24УвКИ 02 ВК)</span><br>
+                    <span>КУРАТОРЫ:</span><br>
+                    <span>Камила Рихтер</span><br>
+                    <span>Анна Комкова</span><br>
+                    <span>Артём Латышев</span>
+                </div>
+                <div class="logo">
+                    <img src="./images/img.png" alt="Logo">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="timeout-message"></div>
+    <script src="javascripts/main.js"></script>
+</body>
 </html>
