@@ -147,6 +147,7 @@ h1 {
     align-items: flex-start;
     width: 100%;
     margin-bottom: 100px;
+    margin-top: 14vh;
 }
 
 .title {
@@ -325,7 +326,7 @@ h1 {
     z-index: 9999;
     opacity: 0;
     pointer-events: none;
-    background: url('/images/transition.png') center/cover no-repeat;
+    background: url('../images/transition.png') center/cover no-repeat;
     transition: opacity 0.3s;
 }
 
@@ -694,7 +695,7 @@ h1 {
     font-size: 64px;
     margin-bottom: 60px;
   font-weight: 800;
-  margin-top: 70px;
+  margin-top: 100px;
 }
 
 .victory-cards {
@@ -757,7 +758,7 @@ h1 {
     font-weight: 100;
     text-align: center;
     line-height: 1.5;
-    margin-bottom: 60px;
+    margin-bottom: 20vh;
 }
 
 .credits {

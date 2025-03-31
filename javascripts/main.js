@@ -100,7 +100,7 @@ function initCardGame() {
                 const bottomCards = document.querySelectorAll('.second-card-screen .bottom-cards .card');
                 if (collectedCards <= bottomCards.length) {
                     const cardToActivate = bottomCards[collectedCards - 1];
-                    cardToActivate.innerHTML = '<img src="./images/latishev.png" alt="Card">';
+                    cardToActivate.innerHTML = '<img src="./images/kamella.png" alt="Card">';
                     cardToActivate.classList.add('active');
                 }
                 
@@ -223,7 +223,10 @@ function checkAllGamesCompleted() {
     const memoryGame = document.querySelector('.second-card-screen .bottom-cards .card:nth-child(2)');
     const hiddenGame = document.querySelector('.hidden-card-screen .bottom-cards .card:nth-child(2)');
     const firstGame = document.querySelector('.second-page .bottom-cards .card:nth-child(1)').classList.contains('active');
+    console.log(123);
+    const victoryScreen = document.querySelector('.victory-screen');
     victoryScreen.classList.remove('hidden');
+
     
     return hiddenGame?.classList.contains('active') && firstGame;
 }
@@ -310,7 +313,7 @@ function transitionToPage(from, to) {
     setTimeout(() => {
         to.classList.remove('hidden');
         overlay.classList.remove('active');
-    }, 1000);
+    }, 2500);
 }
 
 function initEyeMovement() {
